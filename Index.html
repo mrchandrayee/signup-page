@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sign Up</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div class="particles" id="particles"></div>
+
+<div class="card" id="card">
+  <!-- Corner accents -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- Success overlay -->
+  <div class="success-overlay" id="successOverlay">
+    <div class="checkmark-circle">
+      <svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg>
+    </div>
+    <div class="success-title">You're in!</div>
+    <div class="success-sub">Account created. Welcome aboard.</div>
+  </div>
+
+  <!-- Badge -->
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Create account
+  </div>
+
+  <h1>Start your<br>journey today.</h1>
+  <p class="subtitle">Join thousands of makers building something great.</p>
+
+  <!-- Social buttons -->
+  <div class="socials">
+    <button class="social-btn" type="button">
+      <!-- Google icon -->
+      <svg class="social-icon" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.27 9.77A7 7 0 0 1 12 5c1.69 0 3.22.6 4.41 1.58L19.9 3.1A11.94 11.94 0 0 0 12 0C7.38 0 3.4 2.67 1.39 6.61l3.88 3.16Z"/><path fill="#34A853" d="M16.04 18.01A7 7 0 0 1 12 19a7 7 0 0 1-6.61-4.66l-3.89 3a11.97 11.97 0 0 0 10.5 6.66 11.94 11.94 0 0 0 8.04-3.09l-3.99-2.9Z"/><path fill="#FBBC05" d="M5.39 14.34A7.09 7.09 0 0 1 5 12c0-.81.14-1.6.39-2.33L1.51 6.51A12 12 0 0 0 0 12c0 1.93.46 3.76 1.28 5.38l4.11-3.04Z"/><path fill="#4285F4" d="M23.49 12.27c0-.8-.07-1.56-.2-2.27H12v4.51h6.47a5.57 5.57 0 0 1-2.39 3.65l4 2.9c2.33-2.15 3.41-5.36 3.41-8.79Z"/></svg>
+      Google
+    </button>
+    <button class="social-btn" type="button">
+      <!-- GitHub icon -->
+      <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.02c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12C24 5.37 18.63 0 12 0Z"/></svg>
+      GitHub
+    </button>
+  </div>
+
+  <div class="divider"><span>or continue with email</span></div>
+
+  <!-- Fields -->
+  <div class="row">
+    <div class="field" style="animation-delay:.45s">
+      <label>First name</label>
+      <input type="text" placeholder="Name" autocomplete="off"/>
+    </div>
+    <div class="field" style="animation-delay:.48s">
+      <label>Last name</label>
+      <input type="text" placeholder="Name" autocomplete="off"/>
+    </div>
+  </div>
+
+  <div class="field" style="animation-delay:.53s">
+    <label>Email address</label>
+    <input type="email" placeholder="you@example.com" id="emailInput"/>
+  </div>
+
+  <div class="field" style="animation-delay:.58s; margin-bottom:8px;">
+    <label>Password</label>
+    <input type="password" placeholder="Min. 8 characters" id="passInput" oninput="updateStrength(this.value)"/>
+    <span class="eye" id="eyeToggle" onclick="togglePass()">👁</span>
+  </div>
+  <div class="strength-bar">
+    <div class="strength-seg" id="s1"></div>
+    <div class="strength-seg" id="s2"></div>
+    <div class="strength-seg" id="s3"></div>
+    <div class="strength-seg" id="s4"></div>
+  </div>
+
+  <div style="margin-bottom:20px"></div>
+
+  <!-- Terms -->
+  <div class="check-wrap">
+    <input type="checkbox" id="terms"/>
+    <label class="check-label" for="terms">
+      I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+    </label>
+  </div>
+
+  <!-- Submit -->
+  <button class="btn" id="submitBtn" onclick="handleSubmit()">
+    <span id="btnText">Create Account</span>
+    <div class="spinner" id="spinner"></div>
+  </button>
+
+  <p class="footer-text">Already have an account? <a href="#">Sign in</a></p>
+</div>
+
+<script src="Script.js">
+</script>
+</body>
+</html>
